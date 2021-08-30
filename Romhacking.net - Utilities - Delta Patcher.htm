@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Delta Patcher is an hybrid front end to the
+xdelta3 decoder/encoder. It embeds the xdelta.exe execu">
+		<meta property="og:url" content="https://www.romhacking.net/utilities/704/">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Delta Patcher">
+        <meta property="og:site_name" content="ROMhacking.net">
+        <meta property="og:image" content="https://www.romhacking.net/utilities/screenshots/704screenshot1.png">
+        <meta property="og:description" content="Delta Patcher is an hybrid front end to the
+xdelta3 decoder/encoder. It embeds the xdelta.exe execu">
+        <link rel="alternate" type="application/rss+xml" title="ROMhacking.net" href="https://www.romhacking.net/romhackingdotnet.rss">
+    	<link rel="stylesheet" type="text/css" href="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/default.css">
+		<link rel="stylesheet" type="text/css" href="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/boss.css">
+		<link rel="icon" href="https://www.romhacking.net/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="https://www.romhacking.net/favicon.ico" type="image/x-icon"> 
+		<link rel="image_src" href="https://www.romhacking.net/images/rhdnfacebook.jpg">
+		<title>Romhacking.net - Utilities - Delta Patcher</title>
+		<script async="" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/analytics.js"></script><script id="twitter-wjs" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/widgets.js"></script><script src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/jquery.js"></script>
+		<script src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/javascript.js"></script>
+        <script src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/hasher.js"></script>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-101988156-1', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
+	<script charset="utf-8" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/momenttimeline.js"></script><script charset="utf-8" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/timeline.js"></script></head>
+	<body>
+		<div id="top">
+			<span id="topleft"></span>
+			<span id="topright"></span>
+			<a href="https://www.romhacking.net/">
+				<img id="logo" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/logo.png" alt="logo">
+			</a>
+			<div id="navbar_wrap">
+                <label for="show-menu" class="show-menu"></label>
+                <input type="checkbox" id="show-menu">
+                <ul id="navbar">
+                    <li><a href="https://www.romhacking.net/">Home</a></li>
+                    <li><a href="https://www.romhacking.net/forum/">Forum</a></li>
+                    <li><a href="#Sections">Sections</a>
+                        <ul>
+                            <li><a href="https://www.romhacking.net/documents/">Documents</a></li>
+                            <li><a href="https://www.romhacking.net/utilities/">Utilities</a></li>
+                            <li><a href="https://www.romhacking.net/translations/">Translations</a></li>
+                            <li><a href="https://www.romhacking.net/hacks/">ROM Hacks</a></li>
+                            <li><a href="https://www.romhacking.net/games/">Games</a></li>
+                            <li><a href="https://www.romhacking.net/homebrew/">Homebrew</a></li>
+                            <li><a href="https://www.romhacking.net/fonts/">Fonts</a></li>
+                            <li><a href="https://www.romhacking.net/abandoned/">Abandoned</a></li>
+                            <li><a href="https://www.romhacking.net/news/">News Archive</a></li>
+                        </ul>
+                    </li>	
+                    <li><a href="#Community">Community</a>
+                        <ul>
+                            <li><a href="https://www.romhacking.net/forum/">Forum</a></li>
+                            <li><a href="https://www.romhacking.net/wiki/">Wiki</a></li>
+                            <li><a href="https://www.romhacking.net/transhistory/">Community History</a></li>
+                            <li><a href="https://www.romhacking.net/chat/">Chat</a></li>
+                            <li><a href="https://www.romhacking.net/community/">Community Database</a></li>
+                            <li><a href="https://www.romhacking.net/links/">Links</a></li>
+                        </ul>
+                    </li>	
+                    <li><a href="#Submissions">Submissions</a>
+                        <ul>
+                            <li><a href="https://www.romhacking.net/submissions/">Submit Files</a></li>
+                            <li><a href="https://www.romhacking.net/submitnews/">Submit News</a></li>
+                            <li><a href="https://www.romhacking.net/submissions/SubmissionRanking/">Leaderboard</a></li>
+                            <li><a href="https://www.romhacking.net/submissions/QueueStatus/">Queue Status</a></li>
+                            <li><a href="https://www.romhacking.net/maintenance/PublicMaint/">Public Maintenance</a></li>
+                            <li><a href="https://www.romhacking.net/scratchpad/">The Scratchpad</a></li>
+                            <li><a href="https://www.romhacking.net/patch/">Online ROM Patcher</a></li>
+                            <li><a href="https://www.romhacking.net/hash/">Online ROM Hasher</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#Changes">Changes</a>
+                        <ul>
+                            <li><a href="https://www.romhacking.net/submissions/recent/">Change Log</a></li>
+							<li><a href="https://www.romhacking.net/submissions/extdocsubmissions/">Latest Documents</a></li>
+                            <li><a href="https://www.romhacking.net/submissions/extutilsubmissions/">Latest Utilities</a></li>
+                            <li><a href="https://www.romhacking.net/submissions/exttranssubmissions/">Latest Translations</a></li>
+                            <li><a href="https://www.romhacking.net/submissions/exthacksubmissions/">Latest Hacks</a></li>
+                            <li><a href="https://www.romhacking.net/submissions/extreviewsubmissions/">Latest Reviews</a></li>
+                            <li><a href="https://www.romhacking.net/submissions/searchpage/">Advanced Search</a></li>
+                        </ul>
+                    </li>
+					<li><a href="#Seach">Search</a>
+                        <ul>
+                            <li><form class="" method="get" action="https://www.google.com/search" accept-charset="UTF-8"><div>
+		<label for="q"><span class="formhelp" data-tooltip=""></span></label><input type="text" name="q" id="q" maxlength="150">
+		<input type="submit" name="btnG" id="btnG" value="Search">
+		<input type="hidden" name="sitesearch" id="sitesearch" value="www.romhacking.net">
+	</div>
+</form></li>
+                        </ul>
+                    </li>						
+                    <li id="NavBarHelp"><a href="#Help">Help</a>
+                        <ul>
+                            <li><a href="https://www.romhacking.net/about/">About this Site</a></li>
+                            <li><a href="https://www.romhacking.net/start/">Getting Started</a></li>
+                            <li><a href="https://www.romhacking.net/policy/">RHDN Policy</a></li>
+                            <li><a href="https://www.romhacking.net/dictionary/">Dictionary</a></li>
+                            <li><a href="https://www.romhacking.net/faq/">FAQ</a></li>
+                            <li><a href="https://www.romhacking.net/chat/">Chat</a></li>
+                            <li><a href="https://www.romhacking.net/contact/">Contact Staff</a></li>
+                        </ul>
+                    </li>	
+                    <li><a class="social_media" href="https://twitter.com/romhackingnet"><img src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/twitter_logo.png" alt="Follow us on Twitter" title="Follow us on Twitter"></a></li>
+                    <li><a class="social_media" href="https://facebook.com/Romhacking.net"><img src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/facebook_logo.png" alt="Follow us on Facebook" title="Follow us on Facebook"></a></li>                
+                    <li><a class="social_media" href="https://discord.gg/uAufcgz"><img src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/discord_logo.png" alt="Chat with us on Discord" title="Chat with us on Discord"></a></li>
+                    <li><a class="social_media" href="https://www.romhacking.net/about/patrons/"><img src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/patreon_logo.png" alt="Support us on Patreon" title="Support us on Patreon"></a></li>
+                </ul>
+                <br class="clear">
+            </div>
+        </div>    
+        <div id="wrapper">
+		<div id="leftbar">
+            <div class="newsitem">
+                <div class="topbar">
+                    <h2>Sections</h2>
+                </div>
+                <div class="newsbody">
+                    <ul>
+                        <li><a href="https://www.romhacking.net/">Home</a></li>
+                        <li><a href="https://www.romhacking.net/documents/">Documents</a></li>
+                        <li><a href="https://www.romhacking.net/utilities/">Utilities</a></li>
+                        <li><a href="https://www.romhacking.net/translations/">Translations</a></li>
+                        <li><a href="https://www.romhacking.net/hacks/">ROM Hacks</a></li>
+                        <li><a href="https://www.romhacking.net/games/">Games</a></li>
+                        <li><a href="https://www.romhacking.net/homebrew/">Homebrew</a></li>
+                        <li><a href="https://www.romhacking.net/fonts/">Fonts</a></li>
+                        <li><a href="https://www.romhacking.net/abandoned/">Abandoned</a></li>
+                        <li><a href="https://www.romhacking.net/news/">News Archive</a></li>
+                    </ul>
+                </div>
+            </div>
+                
+            <div class="newsitem">
+                <div class="topbar">
+                    <h2>Community</h2>
+                </div>
+                <div class="newsbody">
+                    <ul>
+                        <li><a href="https://www.romhacking.net/forum/">Forum</a></li>
+                        <li><a href="https://www.romhacking.net/wiki/">Wiki</a></li>
+                        <li><a href="https://www.romhacking.net/transhistory/">History</a></li>
+                        <li><a href="https://www.romhacking.net/chat/">Chat</a></li>
+                        <li><a href="https://www.romhacking.net/community/">Community Database</a></li>
+                        <li><a href="https://www.romhacking.net/links/">Links</a></li>
+                    </ul>
+                </div>
+            </div>
+			<div class="newsitem">
+                <div class="topbar">
+                    <h2>Submissions</h2>
+                </div>
+                <div class="newsbody">
+                    <ul>
+                        <li><a href="https://www.romhacking.net/submissions/">Submit Files</a></li>
+                        <li><a href="https://www.romhacking.net/submitnews/">Submit News</a></li>
+                        <li><a href="https://www.romhacking.net/submissions/SubmissionRanking/">Leaderboard</a></li>
+                        <li><a href="https://www.romhacking.net/submissions/QueueStatus/">Queue Status</a></li>
+                        <li><a href="https://www.romhacking.net/maintenance/PublicMaint/">Public Maintenance</a></li>
+                        <li><a href="https://www.romhacking.net/scratchpad/">The Scratchpad</a></li>
+                        <li><a href="https://www.romhacking.net/patch/">Online ROM Patcher</a></li>
+                        <li><a href="https://www.romhacking.net/hash/">Online ROM Hasher</a></li>
+                    </ul>
+                </div>
+            </div>
+			<div class="newsitem">
+                <div class="topbar">
+                    <h2>Help</h2>
+                </div>
+                <div class="newsbody">
+                    <ul>
+                        <li><a href="https://www.romhacking.net/about/">About this Site</a></li>
+                        <li><a href="https://www.romhacking.net/start/">Getting Started</a></li>
+                        <li><a href="https://www.romhacking.net/policy/">RHDN Policy</a></li>
+                        <li><a href="https://www.romhacking.net/dictionary/">Dictionary</a></li>
+                        <li><a href="https://www.romhacking.net/faq/">FAQ</a></li>
+                        <li><a href="https://www.romhacking.net/contact/">Contact Staff</a></li>
+                    </ul>
+                </div>
+            </div>
+			            
+        </div>    
+		<div id="right_container">
+        	<div id="rightbar">
+				<div class="newsitem">
+					<div class="topbar">
+						<h2>Newest Hacks</h2>
+					</div>
+					<div class="newsbody">
+													<a href="https://www.romhacking.net/hacks/6159/"><img class="quad" alt="Legend of Xerd - GBC Compatible" title="Legend of Xerd - GBC Compatible" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/6159titlescreen.gif" onclick="ga('send', 'event', 'Newest hacks', 'Click Image', 'Legend of Xerd - GBC Compatible', '6159');"></a>													<a href="https://www.romhacking.net/hacks/6158/"><img class="quad" alt="Dr. Mario Turbo" title="Dr. Mario Turbo" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/1408titlescreen.png" onclick="ga('send', 'event', 'Newest hacks', 'Click Image', 'Dr. Mario Turbo', '6158');"></a>													<a href="https://www.romhacking.net/hacks/6157/"><img class="quad" alt="Super Mario World - Featuring Doopliss" title="Super Mario World - Featuring Doopliss" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/6157titlescreen.png" onclick="ga('send', 'event', 'Newest hacks', 'Click Image', 'Super Mario World - Featuring Doopliss', '6157');"></a>													<a href="https://www.romhacking.net/hacks/6156/"><img class="quad" alt="A Very Prideful Harvest Moon Animal Parade" title="A Very Prideful Harvest Moon Animal Parade" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/6156titlescreen.png" onclick="ga('send', 'event', 'Newest hacks', 'Click Image', 'A Very Prideful Harvest Moon Animal Parade', '6156');"></a>												<ul>
+															<li>
+									<div class="column_link"><a href="https://www.romhacking.net/hacks/6159/" onclick="ga('send', 'event', 'Newest hacks', 'Click', 'Legend of Xerd - GBC Compatible', '6159');">Legend of Xerd - GBC Compatible</a></div>
+									<div class="column_text">Bug Fix | GB</div>
+								</li>
+															<li>
+									<div class="column_link"><a href="https://www.romhacking.net/hacks/6158/" onclick="ga('send', 'event', 'Newest hacks', 'Click', 'Dr. Mario Turbo', '6158');">Dr. Mario Turbo</a></div>
+									<div class="column_text">Improvement | NES</div>
+								</li>
+															<li>
+									<div class="column_link"><a href="https://www.romhacking.net/hacks/6157/" onclick="ga('send', 'event', 'Newest hacks', 'Click', 'Super Mario World - Featuring Doopliss', '6157');">Super Mario World - Featuring Doopliss</a></div>
+									<div class="column_text">Improvement | SNES</div>
+								</li>
+															<li>
+									<div class="column_link"><a href="https://www.romhacking.net/hacks/6156/" onclick="ga('send', 'event', 'Newest hacks', 'Click', 'A Very Prideful Harvest Moon Animal Parade', '6156');">A Very Prideful Harvest Moon Animal Parade</a></div>
+									<div class="column_text">Improvement | WII</div>
+								</li>
+													</ul>
+					</div>
+					<h3 class="rellink"><a href="https://www.romhacking.net/submissions/exthacksubmissions/">See More Hacks...</a></h3>
+				</div>
+				
+				<div class="newsitem">
+					<div class="topbar">
+						<h2>Newest Translations</h2>
+					</div>
+					<div class="newsbody">
+													<a href="https://www.romhacking.net/translations/6253/"><img class="quad" alt="Metal Slader Glory" title="Metal Slader Glory" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/6253titlescreen.png" onclick="ga('send', 'event', 'Newest translations', 'Click Image', 'Metal Slader Glory', '6253');"></a>													<a href="https://www.romhacking.net/translations/6252/"><img class="quad" alt="Ninja Gaiden II: The Dark Sword of Chaos" title="Ninja Gaiden II: The Dark Sword of Chaos" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/6252titlescreen.png" onclick="ga('send', 'event', 'Newest translations', 'Click Image', 'Ninja Gaiden II: The Dark Sword of Chaos', '6252');"></a>													<a href="https://www.romhacking.net/translations/6251/"><img class="quad" alt="Ninja Gaiden" title="Ninja Gaiden" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/6251titlescreen.png" onclick="ga('send', 'event', 'Newest translations', 'Click Image', 'Ninja Gaiden', '6251');"></a>													<a href="https://www.romhacking.net/translations/6250/"><img class="quad" alt="BugTris" title="BugTris" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/6250titlescreen.png" onclick="ga('send', 'event', 'Newest translations', 'Click Image', 'BugTris', '6250');"></a>												<ul>
+															<li>
+									<div class="column_link"><a href="https://www.romhacking.net/translations/6253/" onclick="ga('send', 'event', 'Newest translations', 'Click', 'Metal Slader Glory', '6253');">Metal Slader Glory</a></div>
+									<div class="column_text">English | Fully Playable | NES</div>
+								</li>	
+															<li>
+									<div class="column_link"><a href="https://www.romhacking.net/translations/6252/" onclick="ga('send', 'event', 'Newest translations', 'Click', 'Ninja Gaiden II: The Dark Sword of Chaos', '6252');">Ninja Gaiden II: The Dark Sword of Chaos</a></div>
+									<div class="column_text">Spanish | Fully Playable | NES</div>
+								</li>	
+															<li>
+									<div class="column_link"><a href="https://www.romhacking.net/translations/6251/" onclick="ga('send', 'event', 'Newest translations', 'Click', 'Ninja Gaiden', '6251');">Ninja Gaiden</a></div>
+									<div class="column_text">Spanish | Fully Playable | NES</div>
+								</li>	
+															<li>
+									<div class="column_link"><a href="https://www.romhacking.net/translations/6250/" onclick="ga('send', 'event', 'Newest translations', 'Click', 'BugTris', '6250');">BugTris</a></div>
+									<div class="column_text">Spanish | Fully Playable | NES</div>
+								</li>	
+													</ul>
+					</div>
+					<h3 class="rellink"><a href="https://www.romhacking.net/submissions/exttranssubmissions/">See More Translations...</a></h3>
+				</div>
+				
+				<div class="newsitem">
+					<div class="topbar">
+						<h2>Newest Utilities</h2>
+					</div>
+											<a href="https://www.romhacking.net/utilities/1640/"><img class="quad" alt="Text Pattern Finder" title="Text Pattern Finder" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/1640screenshot1.png" onclick="ga('send', 'event', 'Newest utilities', 'Click Image', 'Text Pattern Finder', '1640');"></a>											<a href="https://www.romhacking.net/utilities/1639/"><img class="quad" alt="Nitro Studio 2 Deluxe" title="Nitro Studio 2 Deluxe" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/1639screenshot1.PNG" onclick="ga('send', 'event', 'Newest utilities', 'Click Image', 'Nitro Studio 2 Deluxe', '1639');"></a>											<a href="https://www.romhacking.net/utilities/1638/"><img class="quad" alt="Advanced SNES ROM Utility" title="Advanced SNES ROM Utility" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/1638screenshot1.png" onclick="ga('send', 'event', 'Newest utilities', 'Click Image', 'Advanced SNES ROM Utility', '1638');"></a>											<a href="https://www.romhacking.net/utilities/1637/"><img class="quad" alt="ALttP GBA Chest Editor" title="ALttP GBA Chest Editor" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/1637screenshot1.png" onclick="ga('send', 'event', 'Newest utilities', 'Click Image', 'ALttP GBA Chest Editor', '1637');"></a>						
+					<div class="newsbody">
+						<ul>
+															<li>
+									<div class="column_link"><a href="https://www.romhacking.net/utilities/1640/" onclick="ga('send', 'event', 'Newest utilities', 'Click', 'Text Pattern Finder', '1640');">Text Pattern Finder</a></div>
+									<div class="column_text">Table Generators | N/A</div>
+								</li>	
+															<li>
+									<div class="column_link"><a href="https://www.romhacking.net/utilities/1639/" onclick="ga('send', 'event', 'Newest utilities', 'Click', 'Nitro Studio 2 Deluxe', '1639');">Nitro Studio 2 Deluxe</a></div>
+									<div class="column_text">Sound | NDS</div>
+								</li>	
+															<li>
+									<div class="column_link"><a href="https://www.romhacking.net/utilities/1638/" onclick="ga('send', 'event', 'Newest utilities', 'Click', 'Advanced SNES ROM Utility', '1638');">Advanced SNES ROM Utility</a></div>
+									<div class="column_text">Miscellaneous | SNES</div>
+								</li>	
+															<li>
+									<div class="column_link"><a href="https://www.romhacking.net/utilities/1637/" onclick="ga('send', 'event', 'Newest utilities', 'Click', 'ALttP GBA Chest Editor', '1637');">ALttP GBA Chest Editor</a></div>
+									<div class="column_text">Miscellaneous | GBA</div>
+								</li>	
+													</ul>
+				   </div>
+				   <h3 class="rellink"><a href="https://www.romhacking.net/submissions/extutilsubmissions/">See More Utilities...</a></h3>     
+				</div>   
+				
+				<div class="newsitem">
+					<div class="topbar">
+						<h2>Newest Documents</h2>
+					</div>
+					<a href="https://www.romhacking.net/documents/"><img class="quad" alt="Documents" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/documents.png"></a>
+					<div class="newsbody">
+						<ul>
+													<li>
+								<div class="column_link"><a href="https://www.romhacking.net/documents/856/" onclick="ga('send', 'event', 'Newest documents', 'Click', 'SMA2 HACKING NOTES', '856');">SMA2 HACKING NOTES</a></div>
+								<div class="column_text">Game Specific | GBA</div>
+							</li>	
+													<li>
+								<div class="column_link"><a href="https://www.romhacking.net/documents/855/" onclick="ga('send', 'event', 'Newest documents', 'Click', 'Crayon Shin-Chan: Taiketsu! Quantum Panic!! - Compression', '855');">Crayon Shin-Chan: Taiketsu! Quantum Panic!! - Compression</a></div>
+								<div class="column_text">Game Specific | GG</div>
+							</li>	
+													<li>
+								<div class="column_link"><a href="https://www.romhacking.net/documents/854/" onclick="ga('send', 'event', 'Newest documents', 'Click', 'Legend of Zelda Screen Code Reference', '854');">Legend of Zelda Screen Code Reference</a></div>
+								<div class="column_text">Game Specific | NES</div>
+							</li>	
+													<li>
+								<div class="column_link"><a href="https://www.romhacking.net/documents/853/" onclick="ga('send', 'event', 'Newest documents', 'Click', 'Metal Gear 2: Solid Snake Table file', '853');">Metal Gear 2: Solid Snake Table file</a></div>
+								<div class="column_text">Table Files | MSX</div>
+							</li>	
+												</ul>
+					</div>
+					 <h3 class="rellink"><a href="https://www.romhacking.net/submissions/extdocsubmissions/">See More Documents...</a></h3>
+				</div>
+				<div class="newsitem">
+					<div class="topbar">
+						<h2>Newest Reviews</h2>
+					</div>
+											<a href="https://www.romhacking.net/reviews/7447/#review"><img class="quad" alt="Castlevania: Blood Moon" title="Castlevania: Blood Moon" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/79titlescreen.gif" onclick="ga('send', 'event', 'Newest hacks', 'Click Image', 'Castlevania: Blood Moon', '79');"></a>											<a href="https://www.romhacking.net/reviews/7446/#review"><img class="quad" alt="Super Mario Bros. - Two Players Hack" title="Super Mario Bros. - Two Players Hack" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/4180titlescreen.png" onclick="ga('send', 'event', 'Newest hacks', 'Click Image', 'Super Mario Bros. - Two Players Hack', '4180');"></a>											<a href="https://www.romhacking.net/reviews/7445/#review"><img class="quad" alt="Shining Force CL" title="Shining Force CL" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/872titlescreen.jpg" onclick="ga('send', 'event', 'Newest hacks', 'Click Image', 'Shining Force CL', '4017');"></a>											<a href="https://www.romhacking.net/reviews/7444/#review"><img class="quad" alt="Megaman 1 - Limbo Edition" title="Megaman 1 - Limbo Edition" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/5783titlescreen.png" onclick="ga('send', 'event', 'Newest hacks', 'Click Image', 'Megaman 1 - Limbo Edition', '5783');"></a>						
+					<div class="newsbody">
+						<ul>
+													<li>
+								<div class="column_link"><a href="https://www.romhacking.net/reviews/7447/#review" onclick="ga('send', 'event', 'Newest reviews', 'Click', 'PLEASE restore the original CV1 controls!', '7447');">PLEASE restore the original CV1 controls!</a></div>
+								<div class="column_text">Hacks | Castlevania: Blood Moon</div>
+							</li>	
+													<li>
+								<div class="column_link"><a href="https://www.romhacking.net/reviews/7446/#review" onclick="ga('send', 'event', 'Newest reviews', 'Click', 'Nice hack but would be perfect if Mario and Luigi have own separated color palette', '7446');">Nice hack but would be perfect if Mario and Luigi have own separated color palette</a></div>
+								<div class="column_text">Hacks | Super Mario Bros. - Two Players Hack</div>
+							</li>	
+													<li>
+								<div class="column_link"><a href="https://www.romhacking.net/reviews/7445/#review" onclick="ga('send', 'event', 'Newest reviews', 'Click', 'A good mod for S1 that takes a more defensive approach', '7445');">A good mod for S1 that takes a more defensive approach</a></div>
+								<div class="column_text">Hacks | Shining Force CL</div>
+							</li>	
+													<li>
+								<div class="column_link"><a href="https://www.romhacking.net/reviews/7444/#review" onclick="ga('send', 'event', 'Newest reviews', 'Click', 'An interesting Level Design, but this...', '7444');">An interesting Level Design, but this...</a></div>
+								<div class="column_text">Hacks | Megaman 1 - Limbo Edition</div>
+							</li>	
+												</ul>
+					</div>
+					 <h3 class="rellink">
+					 <a href="https://www.romhacking.net/submissions/extreviewsubmissions/">See More Reviews...</a>
+					 </h3>
+				</div>
+				<div class="newsitem">
+					<div class="topbar">
+						<h2>Newest Homebrew</h2>
+					</div>
+											<a href="https://www.romhacking.net/homebrew/146/"><img class="quad" alt="Varooom 3D" title="Varooom 3D" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/146titlescreen.png" onclick="ga('send', 'event', 'Newest homebrew', 'Click Image', 'Varooom 3D', '146');"></a>											<a href="https://www.romhacking.net/homebrew/145/"><img class="quad" alt="Lumberjack" title="Lumberjack" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/145titlescreen.png" onclick="ga('send', 'event', 'Newest homebrew', 'Click Image', 'Lumberjack', '145');"></a>											<a href="https://www.romhacking.net/homebrew/144/"><img class="quad" alt="Rolling Pumpkins" title="Rolling Pumpkins" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/144titlescreen.png" onclick="ga('send', 'event', 'Newest homebrew', 'Click Image', 'Rolling Pumpkins', '144');"></a>											<a href="https://www.romhacking.net/homebrew/143/"><img class="quad" alt="DooM Raycaster Engine (V1.1) (GBA)" title="DooM Raycaster Engine (V1.1) (GBA)" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/143titlescreen.png" onclick="ga('send', 'event', 'Newest homebrew', 'Click Image', 'DooM Raycaster Engine (V1.1) (GBA)', '143');"></a>						
+					<div class="newsbody">
+						<ul>
+													<li>
+								<div class="column_link"><a href="https://www.romhacking.net/homebrew/146/" onclick="ga('send', 'event', 'Newest homebrew', 'Click', 'Varooom 3D', '146');">Varooom 3D</a></div>
+								<div class="column_text">Full Games</div>
+							</li>	
+													<li>
+								<div class="column_link"><a href="https://www.romhacking.net/homebrew/145/" onclick="ga('send', 'event', 'Newest homebrew', 'Click', 'Lumberjack', '145');">Lumberjack</a></div>
+								<div class="column_text">Full Games</div>
+							</li>	
+													<li>
+								<div class="column_link"><a href="https://www.romhacking.net/homebrew/144/" onclick="ga('send', 'event', 'Newest homebrew', 'Click', 'Rolling Pumpkins', '144');">Rolling Pumpkins</a></div>
+								<div class="column_text">Tech Demos</div>
+							</li>	
+													<li>
+								<div class="column_link"><a href="https://www.romhacking.net/homebrew/143/" onclick="ga('send', 'event', 'Newest homebrew', 'Click', 'DooM Raycaster Engine (V1.1) (GBA)', '143');">DooM Raycaster Engine (V1.1) (GBA)</a></div>
+								<div class="column_text">Full Games</div>
+							</li>	
+												</ul>
+					</div>
+					 <h3 class="rellink">
+					 <a href="https://www.romhacking.net/homebrew/">See More Homebrew...</a>
+					 </h3>
+				</div>  
+			</div>
+			<div id="rightbar2">
+				<div class="newsitem">
+					<div class="topbar">
+						<h2>Featured Hack Images</h2>
+					</div>
+					<div class="newsbody">
+													<a href="https://www.romhacking.net/hacks/659/"><img class="quad" alt="Ice Metal 1: Uninstall" title="Ice Metal 1: Uninstall" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/659screenshot3.png" onclick="ga('send', 'event', 'Featured hacks', 'Click', 'Ice Metal 1: Uninstall', '659');"></a>													<a href="https://www.romhacking.net/hacks/660/"><img class="quad" alt="Uninvited Uncensored" title="Uninvited Uncensored" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/660screenshot1.png" onclick="ga('send', 'event', 'Featured hacks', 'Click', 'Uninvited Uncensored', '660');"></a>													<a href="https://www.romhacking.net/hacks/712/"><img class="quad" alt="Displayable 32766 damage/healing hack" title="Displayable 32766 damage/healing hack" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/712screenshot4.png" onclick="ga('send', 'event', 'Featured hacks', 'Click', 'Displayable 32766 damage/healing hack', '712');"></a>													<a href="https://www.romhacking.net/hacks/764/"><img class="quad" alt="Reserve_22//." title="Reserve_22//." src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/764screenshot3.jpg" onclick="ga('send', 'event', 'Featured hacks', 'Click', 'Reserve_22//.', '764');"></a>											</div>
+					 <!-- <h3 class="rellink"><a href="/?page=main&action=MoreRandomHackImages">See More Images...</a></h3> -->
+				</div>
+				<div class="newsitem">
+					<div class="topbar">
+						<h2>Featured Translation Images</h2>
+					</div>
+					<div class="newsbody">
+													<a href="https://www.romhacking.net/translations/847/"><img class="quad" alt="Haru no Ashioto Demo" title="Haru no Ashioto Demo" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/847screenshot3.png" onclick="ga('send', 'event', 'Featured translations', 'Click', 'Haru no Ashioto Demo', '847');"></a>													<a href="https://www.romhacking.net/translations/1219/"><img class="quad" alt="Downtown Special: Kunio-kun no Jidaigeki Dayo Zen'in Shuugou!" title="Downtown Special: Kunio-kun no Jidaigeki Dayo Zen'in Shuugou!" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/1219screenshot2.PNG" onclick="ga('send', 'event', 'Featured translations', 'Click', 'Downtown Special: Kunio-kun no Jidaigeki Dayo Zen'in Shuugou!', '1219');"></a>													<a href="https://www.romhacking.net/translations/1365/"><img class="quad" alt="Touhou Reiiden" title="Touhou Reiiden" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/1365screenshot4.png" onclick="ga('send', 'event', 'Featured translations', 'Click', 'Touhou Reiiden', '1365');"></a>													<a href="https://www.romhacking.net/translations/1508/"><img class="quad" alt="Breath of Fire IV" title="Breath of Fire IV" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/1508screenshot1.jpg" onclick="ga('send', 'event', 'Featured translations', 'Click', 'Breath of Fire IV', '1508');"></a>											</div>
+					 <!-- <h3 class="rellink"><a href="/?page=main&action=MoreRandomTranslationImages">See More Images...</a></h3> -->
+				</div>    				
+				<div class="newsitem">
+					<div class="topbar">
+						<h2>Recent Forum Posts</h2>
+					</div>
+					<div class="newsbody">
+						<ul>
+															<li>
+									<!-- <div class="post_icon"><img alt="" src="/smf/Themes/romh/images/post/lamp.gif" /></div> -->
+									<div class="column_link"><a href="https://www.romhacking.net/forum/index.php?topic=23466.msg418580#new" rel="nofollow" onclick="ga('send', 'event', 'Recent Posts', 'Click', 'Chrono trigger plus ');">Chrono trigger plus </a></div>
+									<div class="column_text"><a href="https://www.romhacking.net/forum/index.php?board=11.0">Personal Projects</a></div>
+									<div class="column_text"><strong>Today</strong> at 09:53:36 am</div>
+								</li>
+															<li>
+									<!-- <div class="post_icon"><img alt="" src="/smf/Themes/romh/images/post/lamp.gif" /></div> -->
+									<div class="column_link"><a href="https://www.romhacking.net/forum/index.php?topic=33137.msg418579#new" rel="nofollow" onclick="ga('send', 'event', 'Recent Posts', 'Click', 'Arkista's Ring (NES) Level Editing -- Active Notes');">Arkista's Ring (NES) Level Editing -- Active Notes</a></div>
+									<div class="column_text"><a href="https://www.romhacking.net/forum/index.php?board=5.0">ROM Hacking Discussion</a></div>
+									<div class="column_text"><strong>Today</strong> at 09:50:03 am</div>
+								</li>
+															<li>
+									<!-- <div class="post_icon"><img alt="" src="/smf/Themes/romh/images/post/lamp.gif" /></div> -->
+									<div class="column_link"><a href="https://www.romhacking.net/forum/index.php?topic=33372.msg418578#new" rel="nofollow" onclick="ga('send', 'event', 'Recent Posts', 'Click', 'Translations: Metal Slader Glory NES English Translation');">Translations: Metal Slader Glory NES English Translation</a></div>
+									<div class="column_text"><a href="https://www.romhacking.net/forum/index.php?board=8.0">News Submissions</a></div>
+									<div class="column_text"><strong>Today</strong> at 09:26:32 am</div>
+								</li>
+															<li>
+									<!-- <div class="post_icon"><img alt="" src="/smf/Themes/romh/images/post/lamp.gif" /></div> -->
+									<div class="column_link"><a href="https://www.romhacking.net/forum/index.php?topic=32575.msg418576#new" rel="nofollow" onclick="ga('send', 'event', 'Recent Posts', 'Click', 'Feedback thread of Megaman 1 Limbo edition');">Feedback thread of Megaman 1 Limbo edition</a></div>
+									<div class="column_text"><a href="https://www.romhacking.net/forum/index.php?board=5.0">ROM Hacking Discussion</a></div>
+									<div class="column_text"><strong>Today</strong> at 08:30:03 am</div>
+								</li>
+															<li>
+									<!-- <div class="post_icon"><img alt="" src="/smf/Themes/romh/images/post/lamp.gif" /></div> -->
+									<div class="column_link"><a href="https://www.romhacking.net/forum/index.php?topic=33371.msg418574#new" rel="nofollow" onclick="ga('send', 'event', 'Recent Posts', 'Click', '[MD Magical Hat no ...] Can someone translate this short script ?');">[MD Magical Hat no ...] Can someone translate this short script ?</a></div>
+									<div class="column_text"><a href="https://www.romhacking.net/forum/index.php?board=9.0">Script Help and Language Discussion</a></div>
+									<div class="column_text"><strong>Today</strong> at 06:37:13 am</div>
+								</li>
+								           
+						</ul>
+					 </div>
+					 <h3 class="rellink">
+					 <a href="https://www.romhacking.net/forum/">See More Forum Topics...</a>
+					 </h3>
+				</div>    
+				<div class="newsitem">
+					<div class="topbar">
+						<h2>Recent Updates</h2>
+					</div>
+				   <div class="newsbody">
+						<ul>
+													<li>
+								<div class="column_link"><a href="https://www.romhacking.net/translations/6253/" onclick="ga('send', 'event', 'Newest translations', 'Click', 'Metal Slader Glory', '6253');">Metal Slader Glory</a></div>
+								<div class="column_text">Translations</div>
+								<div class="column_text">Adjusted release date to be today.</div>
+							</li>	
+													<li>
+								<div class="column_link"><a href="https://www.romhacking.net/hacks/5271/" onclick="ga('send', 'event', 'Newest hacks', 'Click', 'Hacks - Super Luigi Bros. (35th Anniversary)', '5271');">Hacks - Super Luigi Bros. (35th Anniversary)</a></div>
+								<div class="column_text">Credits</div>
+								<div class="column_text">The creator of this patch has been included and the contributor credits have been adjusted accordingly.</div>
+							</li>	
+													<li>
+								<div class="column_link"><a href="https://www.romhacking.net/hacks/6054/" onclick="ga('send', 'event', 'Newest hacks', 'Click', 'Road Rash - Service Repair', '6054');">Road Rash - Service Repair</a></div>
+								<div class="column_text">Hacks</div>
+								<div class="column_text">Description</div>
+							</li>	
+													<li>
+								<div class="column_link"><a href="https://www.romhacking.net/hacks/6115/" onclick="ga('send', 'event', 'Newest hacks', 'Click', 'Metroid Fusion: Special Edition', '6115');">Metroid Fusion: Special Edition</a></div>
+								<div class="column_text">Hacks</div>
+								<div class="column_text">Accidentally messed up the Fusion 
+suit's color palette in the hard mode patch, just needed to reupload it 
+with the fix real quick.</div>
+							</li>	
+												</ul>
+					</div>
+					 <h3 class="rellink">
+					 <a href="https://www.romhacking.net/submissions/recent/">See More Changes...</a>
+					 </h3>
+				</div>
+				<div class="newsitem">
+					<div class="topbar">
+						<h2>Social Media</h2>
+					</div>
+					<div class="newsbody">
+						<iframe id="twitter-widget-0" scrolling="no" allowtransparency="true" allowfullscreen="true" class="twitter-timeline twitter-timeline-rendered" style="position: static; visibility: visible; display: inline-block; width: 100%; padding: 0px; border: medium none; max-width: 100%; min-width: 180px; margin-top: 0px; margin-bottom: 0px; height: 1514.13px;" data-widget-id="profile:romhackingnet" title="Twitter Timeline" frameborder="0"></iframe>
+					</div>
+					 <h3 class="rellink"><a href="https://twitter.com/romhackingnet">See More Tweets...</a></h3>
+				</div>            
+			</div>
+		</div>
+		<div id="main">
+<div class="newsitem">
+	<div class="topbar">
+		<h2>Delta Patcher</h2>
+		<h4 class="date"><a href="https://www.romhacking.net/?page=utilities&amp;category=2">Patching</a></h4>
+	</div>
+	<div class="transbody">
+		<div class="floatl">
+    		<table class="entryinfo entryinfolarge">
+				<caption>Utility Information</caption>
+				<tbody>
+					<tr>
+						<td colspan="2">
+							<div class="center">
+								<a href="https://www.romhacking.net/?page=utilities&amp;action=images&amp;id=704&amp;imageid=title"><img src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/704screenshot1.png" alt="Screenshot" width="256"></a>							</div>	
+						</td>
+					</tr>
+					<tr>
+						<th>Author</th><td><a href="https://www.romhacking.net/community/153/">SadNES cITy Translations</a></td>
+					</tr>
+					<tr>
+						<th>Category</th><td><a href="https://www.romhacking.net/?page=utilities&amp;category=2">Patching</a></td>
+					</tr>
+					<tr>
+						<th>Platform</th><td><a href="https://www.romhacking.net/?page=utilities&amp;platform=24">Not Applicable</a></td>
+					</tr>
+					<tr>
+						<th>Game</th><td><a href="https://www.romhacking.net/games/704/">N/A</a></td>
+					</tr>
+					<tr>	
+						<th>OS</th><td><a href="https://www.romhacking.net/?page=utilities&amp;os=2">Win</a></td>
+					</tr>
+					<tr>	
+						<th>Level</th><td><a href="https://www.romhacking.net/?page=utilities&amp;level=1">Beginner</a></td>
+					</tr>
+					<tr>	
+						<th>Version</th><td>2.0.1</td>
+					</tr>
+					<tr>
+						<th>Release Date</th><td>19 July 2017</td>
+					</tr>
+					<tr>
+						<th>Downloads</th><td>375909</td>
+					</tr>	
+					<tr>
+						<th>Last Modified</th><td><a href="https://www.romhacking.net/?page=submissions&amp;action=itemhistory&amp;section=Utilities&amp;sectionid=11&amp;id=704">20 July 2017</a></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="entrymenu">
+				<ul>
+					<li><a href="https://www.romhacking.net/?page=utilities&amp;action=editentrypage&amp;id=704">EDIT ENTRY</a></li>
+					<li><a href="https://www.romhacking.net/?page=utilities&amp;action=flagentrypage&amp;id=704">FLAG AS NONCOMPLIANT</a></li>
+				</ul>	
+			</div>
+		</div>
+		<div class="entrybody entrybodylarge">
+			<span class="floatr">
+				<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.romhacking.net/utilities/704/&amp;title=Delta+Patcher&amp;display=popup">
+				<span class="resp-sharing-button resp-sharing-button--facebook">
+					<span aria-hidden="true" class="resp-sharing-button__icon">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"></path></svg></span>
+					Share
+				</span></a>
+				<a class="resp-sharing-button__link xml plain" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.romhacking.net/utilities/704/&amp;text=Delta+Patcher&amp;via=romhackingnet">
+				<span class="resp-sharing-button resp-sharing-button--twitter">
+					<span aria-hidden="true" class="resp-sharing-button__icon">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"></path></svg>
+					</span>
+				Tweet
+				</span></a>
+			</span>
+			<h3>Description:</h3>
+			<div><p>Delta Patcher is an hybrid front end to the
+xdelta3 decoder/encoder. It embeds the xdelta.exe executable and 
+extracts it on the fly to apply/create xdelta patches.
+It supports more options than the most front ends, like compression 
+level, source window size, patch descriptions and checksum verification.
+ It’s written in C++ and all the needed libraries are statically linked 
+to the EXE.
+</p>
+<p>Changelog
+</p>
+<p>2.0.1:
+</p>
+<ul>
+<li> Added drag and drop functionality in patch creation mode.
+</li></ul>
+<p>2.0:
+</p>
+<ul>
+<li> <span class="bold">No xdelta.exe is needed</span>. Starting from version 2.0, it has been embedded in the delta patcher executable;
+</li><li> More intuitive GUI design;
+</li><li> patch application: 
+<ul>
+<li> disable checksum validation;
+</li><li> backup original file;
+</li></ul>
+</li><li> patch creation: 
+<ul>
+<li> <span class="bold">custom UTF8 description for patches</span> - patches created with delta patcher will show this description if opened with delta patcher (a là PPF-O-MATIC3);
+</li><li> patch compression level;
+</li><li> source window size;
+</li><li> checksum.
+</li></ul>
+</li></ul>
+<p><span class="bold">Full and Lite versions</span>: This package comes 
+with two versions of the frontend.The Lite version is simply the 
+patching GUI and it is intended to be included along with your patch. 
+This way, the final user doesn’t need to mess with other options like 
+patch creation (simplicity comes first!).
+The Full version is mainly for romhackers, and
+it supports both creation and application
+of xdelta patches.</p>
+</div>
+			<h3>Links:</h3>
+			<ul>
+				<li><a href="https://www.romhacking.net/?page=news&amp;newssearch=1&amp;project=http://www.romhacking.net/utilities/704/">News Articles for this Utility</a></li>
+				<li><a href="https://www.romhacking.net/download/utilities/704/">Download File Now</a></li>
+			</ul>
+		</div>
+	</div>
+</div>	
+<div class="newsitem">		
+	<div class="topbar">
+		User Review Information
+	</div>
+	<div class="transbody">
+		<div class="center">
+						<table><caption>User Reviews</caption><thead><tr class="tablecol"><th class="col_1 ">Headline</th><th class="col_2 ">Author</th><th class="col_3 ">Date</th><th class="col_4 ">Version</th><th class="col_5 ">Recommended</th></tr></thead><tbody><tr class="even"><td class="col_1 "><a href="https://www.romhacking.net/reviews/2247/#review">Easier to use than other patchers.</a></td><td class="col_2 "><a href="http://www.romhacking.net/forum/index.php?action=profile;u=15991">Chronosplit</a></td><td class="col_3 ">26 May 2016</td><td class="col_4 ">2.0</td><td class="col_5 ">Yes</td></tr></tbody></table>		</div>
+		<div class="entrymenu">
+			<a href="https://www.romhacking.net/?page=reviews&amp;action=addentrypage&amp;section=Utilities&amp;subid=704">ADD REVIEW</a> 
+					</div>
+	</div>
+</div>	﻿﻿</div>
+</div>
+<div id="footer">
+	©2005-2021 RHDN 3.0.0 by Nightcrawler. All Rights Reserved.
+	<br>Execution time - 0.0031 sec. - Number of Queries: 3<br>
+	<a href="https://www.romhacking.net/about/">About Us</a>
+	| <a href="https://www.romhacking.net/policy/">RHDN Policy</a>
+	| <a href="https://validator.w3.org/check?uri=referer">HTML5</a>
+	| <a href="https://jigsaw.w3.org/css-validator/check/referer?profile=css3">CSS</a>
+    <br>
+    <a href="https://twitter.com/romhackingnet"><img src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/twitter_logo.png" alt="Follow us on Twitter" title="Follow us on Twitter"></a>
+    <a href="https://facebook.com/Romhacking.net"><img src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/facebook_logo.png" alt="Follow us on Facebook" title="Follow us on Facebook"></a>                
+    <a href="https://discord.gg/uAufcgz"><img src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/discord_logo.png" alt="Chat with us on Discord" title="Chat with us on Discord"></a>
+	<a href="https://www.romhacking.net/about/patrons/"><img src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/patreon_logo.png" alt="Support us on Patreon" title="Support us on Patreon"></a>
+</div>
+
+<iframe scrolling="no" allowtransparency="true" src="Romhacking.net%20-%20Utilities%20-%20Delta%20Patcher-Dateien/widget_iframe.htm" title="Twitter settings iframe" style="display: none;" frameborder="0"></iframe><iframe id="rufous-sandbox" scrolling="no" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: medium none;" title="Twitter analytics iframe" frameborder="0"></iframe></body></html>
